@@ -1,2 +1,4 @@
 
 * How to run
+lein deps
+lein run

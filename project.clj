@@ -7,15 +7,8 @@
 
                  [aleph "0.1.5-SNAPSHOT"]
                  [lamina "0.4.0-SNAPSHOT"]
-                 [ring/ring-core "0.2.5"]
-
-                 ;[org.eclipse.jetty/jetty-websocket "7.4.0.RC0"]
-                 ]
-  :dev-dependencies [[swank-clojure "1.2.1"]
-                     ;[lein-ring "0.4.0"]
-                     ]
-  ;:ring {:handler test/app}
-  ;:main ircbot
-  ;:aot :all
-  )
+                 [ring/ring-core "0.3.8"]
+                 [ring/ring-devel "0.3.8"]]
+  :dev-dependencies [[swank-clojure "1.2.1"]]
+  :main run)
 
