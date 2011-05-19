@@ -2,9 +2,6 @@
 * What is this?
 This is a _barebone_ IRC client. 
 
-The client is written in HTML/Websockets. When you run this code, it'll start a HTTP server.
-
-
 * How to Run
 #+BEGIN_SRC bash
 lein clean
