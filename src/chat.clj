@@ -6,7 +6,7 @@
    [:style
     "#msg { width:600px; }\n"
     "#chat { height:400px; width: 600px; border: 2px solid; font-family: consolas; overflow:auto;}\n"]
-   [:h1 "IRC Chat Client"]
+   [:h3 "IRC Chat Client"]
    [:input#msg {:type "textbox" :onkeydown "if (event.keyCode == 13) { ws.send(this.value); this.value = ''; }"}]
    [:div#chat "Connecting...<br />"]
    [:script

@@ -1,4 +1,17 @@
 
 * How to run
-lein deps
-lein run
+$ lein clean
+$ lein deps
+$ java -cp 'lib/*:src' clojure.main src/run.clj
+
+
+Wait 10 seconds. Then navigate to:
+http://localhost:3005/
+
+
+Within a minute, you'll see irc freenode server output.
+You'll automatically join irc://irc.freenode.org/#bot-testing channel.
+Type message in textbox to chat in channel.
+
+
+If you don't see any server output. Try refreshing the browser. Then PM the clj-powered-bot to cause server output.

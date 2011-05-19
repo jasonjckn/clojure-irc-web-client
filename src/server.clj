@@ -8,19 +8,18 @@
             [compojure.handler :as handler]))
 
 (def status (channel))
-(defn do-reading []
+(defn siphon-irc-server []
   (when-let [line (.readLine br)]
     (enqueue status line)
     (recur)))
 
-(defn echo-handler [channel client-info]
+(defn websocket-handler [channel client-info]
   (receive-all channel do-msg)
   (siphon status channel))
 
 (defroutes main-routes
   (GET "/" [] (chat-page))
-  (GET "/socket" [] (wrap-aleph-handler echo-handler))
-  (GET "/connect" [] (do (init-globals) (future (do-reading)) "Connected.")))
+  (GET "/socket" [] (wrap-aleph-handler websocket-handler)))
 
 
 
