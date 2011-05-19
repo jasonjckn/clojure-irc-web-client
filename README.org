@@ -1,8 +1,8 @@
 
 * How to run
-1) $ lein clean
-2) $ lein deps
-3) $ java -cp 'lib/*:src' clojure.main src/run.clj
++ lein clean
++ lein deps
++ java -cp 'lib/*:src' clojure.main src/run.clj
 
 
 Wait 10 seconds. Then navigate to:
