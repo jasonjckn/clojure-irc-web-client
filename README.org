@@ -2,6 +2,9 @@
 * What is this?
 This is a _barebone_ IRC client. 
 
+Requirements:
++ Latest Chrome or Latest Firefox
+
 * How to Run
 #+BEGIN_SRC bash
 lein clean
