@@ -35,3 +35,8 @@ Here are some of the technologies I played around with:
 + aleph (serving http requests with channels)
 + compojure (like django)
 + hiccup (DSL for HTML)
+
+* Screenshot
+[[file:pic.png]]
+
+
