@@ -37,6 +37,4 @@ Here are some of the technologies I played around with:
 + hiccup (DSL for HTML)
 
 * Screenshot
-[[https://github.com/jasonjckn/clojure-irc-web-client/blob/master/pic.png]]
-
-
+[[https://github.com/jasonjckn/clojure-irc-web-client/raw/master/pic.png]]
