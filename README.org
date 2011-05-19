@@ -3,7 +3,8 @@
 This is a _barebone_ IRC client. 
 
 Requirements:
-+ Latest Chrome or Latest Firefox
++ Latest Google Chrome
++ Firefox doesn't work.
 
 * How to Run
 #+BEGIN_SRC bash
