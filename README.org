@@ -3,7 +3,7 @@
 #+BEGIN_SRC bash
 lein clean
 lein deps
-java -cp 'lib/*:src' clojure.main src/run.clj
+java -cp 'lib/*:src/' clojure.main src/start_server.clj
 #+END_SRC
 
 
