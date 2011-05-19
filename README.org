@@ -1,8 +1,10 @@
 
 * How to run
-+ lein clean
-+ lein deps
-+ java -cp 'lib/*:src' clojure.main src/run.clj
+#+BEGIN_SRC bash
+lein clean
+lein deps
+java -cp 'lib/*:src' clojure.main src/run.clj
+#+END_SRC
 
 
 Wait 10 seconds. Then navigate to:
@@ -10,7 +12,7 @@ http://localhost:3005/
 
 
 Within a minute, you'll see irc freenode server output.
-You'll automatically join irc://irc.freenode.org/#bot-testing channel.
+You'll automatically join irc://irc.freenode.org/#bot-testing.
 Type message in textbox to chat in channel.
 
 
