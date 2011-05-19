@@ -15,11 +15,11 @@
 
 (defn -main []
   (irc/init-globals)
-  (future (ws/siphon-irc-server))
   (def main-routes-reload (wrap-reload #'main-routes '(websocket index irc)))
   (println ">> Starting server at http://localhost:3005/")
   (println ">> Joining irc://irc.freenode.org/#bot-testing.")
-  (start-http-server (wrap-ring-handler main-routes-reload) {:port 3005 :websocket true}))
+  (start-http-server (wrap-ring-handler main-routes-reload)
+                     {:port 3005 :websocket true}))
 
 (-main)
 

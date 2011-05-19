@@ -1,5 +1,9 @@
 (ns irc
-  (:use [clojure.java.io :only [reader writer]])
+  (:use [clojure.java.io :only [reader writer]]
+        [gloss core]
+        [lamina core]
+        [aleph http tcp]
+        )
   (:import [java.net Socket]))
 
 (def chan "#bot-testing")
@@ -10,24 +14,37 @@
 (defn user-cmd [] (irc-cmd "USER" (str nick " 0 * :tutorial bot")))
 (defn join-cmd [] (irc-cmd "JOIN" chan))
 (defn nick-cmd [] (irc-cmd "NICK" nick))
+(defn pong-cmd [token] (irc-cmd "PONG" token))
 
-(defn do-cmds [w & cmds]
-  (doseq [c cmds] (.write w c))
-  (.flush w))
+(defn handshake [] [(nick-cmd) (user-cmd) (join-cmd)])
 
-(defn irc-handshake []
-  (let [s (Socket. "irc.freenode.org" 6667)
-        w (writer s)]
-    (do-cmds w (nick-cmd) (user-cmd) (join-cmd))
-    s))
+(defn parse-ping [s]
+  (let [[_ b] (re-matches #"PING :(.+)" s)] b))
 
-;; GLOBAL VAR HACKS:
+(defn make-irc-channel []
+  (let [ch @(tcp-client
+             {:host "irc.freenode.org" :port 6667
+              :frame (string :utf-8 :delimiters ["\r\n"])})
+
+        str-ch (map* str ch)
+
+        pong-if-ping #(when-let [token (parse-ping %)]
+                        (enqueue ch (pong-cmd token)))
+
+        setup-irc (fn []
+                    (siphon (apply channel (handshake)) ch)
+                    (receive-all str-ch pong-if-ping))]
+    
+    (receive-all str-ch println)
+    (setup-irc)
+
+    ch))
+
+(def irc-ch)
 (defn init-globals []
-  (def s (irc-handshake))
-  (def br (reader s))
-  (def bw (writer s)))
-(defn send-msg [txt]
-  (do-cmds bw (msg-cmd txt)))
-(defn get-status-line []
-  (.readLine br))
+  (def irc-ch (make-irc-channel)))
+
+
+
+
 
