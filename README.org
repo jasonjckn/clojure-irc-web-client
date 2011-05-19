@@ -1,5 +1,11 @@
 
-* How to run
+* What is this?
+This is a _barebone_ IRC client. 
+
+The client is written in HTML/Websockets. When you run this code, it'll start a HTTP server.
+
+
+* How to Run
 #+BEGIN_SRC bash
 lein clean
 lein deps
@@ -12,8 +18,19 @@ http://localhost:3005/
 
 
 Within a minute, you'll see irc freenode server output.
-You'll automatically join irc://irc.freenode.org/#bot-testing.
+The client will automatically join irc://irc.freenode.org/#bot-testing.
 Type message in textbox to chat in channel.
 
 
 If you don't see any server output. Try refreshing the browser. Then PM the clj-powered-bot to cause server output.
+
+* Why did I built it?
+Out of curiosity.
+
+Here are some of the technologies I played around with:
++ websockets
++ clojure (and futures)
++ lamina (like GO channels)
++ aleph (serving http requests with channels)
++ compojure (like django)
++ hiccup (DSL for HTML)
