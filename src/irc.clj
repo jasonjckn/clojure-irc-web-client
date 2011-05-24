@@ -3,8 +3,7 @@
         [gloss core]
         [lamina core]
         [aleph http tcp]
-        )
-  (:import [java.net Socket]))
+        ))
 
 (def chan "#bot-testing")
 (def nick "clj-powered-bot")
@@ -24,18 +23,14 @@
 (defn make-irc-channel []
   (let [ch @(tcp-client
              {:host "irc.freenode.org" :port 6667
-              :frame (string :utf-8 :delimiters ["\r\n"])})
-
-        str-ch (map* str ch)
-
-        pong-if-ping #(when-let [token (parse-ping %)]
-                        (enqueue ch (pong-cmd token)))
+              :frame (string :utf-8 :delimiters ["\r\n"] :as-str true)})
 
         setup-irc (fn []
-                    (siphon (apply channel (handshake)) ch)
-                    (receive-all str-ch pong-if-ping))]
+		    ;;this filter* should be a remove*, but I apparently forgot to expose that in alpha1
+		    (siphon (->> ch fork (map* parse-ping) (filter* (complement nil?))) ch) 
+		    (apply enqueue ch (handshake)))]
     
-    (receive-all str-ch println)
+    (receive-all (fork ch) println)
     (setup-irc)
 
     ch))
