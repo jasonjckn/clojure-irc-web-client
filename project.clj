@@ -5,10 +5,9 @@
                  [compojure "0.6.3"]
                  [hiccup "0.3.4"]
 
-                 [aleph "0.1.5-SNAPSHOT"]
-                 [lamina "0.4.0-SNAPSHOT"]
+                 [aleph "0.2.0-alpha1"]
                  [ring/ring-core "0.3.8"]
                  [ring/ring-devel "0.3.8"]]
   :dev-dependencies [[swank-clojure "1.2.1"]]
-  :main run)
+  :main start-server)
 
