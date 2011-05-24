@@ -22,7 +22,8 @@
 
 (defn make-irc-channel []
   (let [ch @(tcp-client
-             {:host "irc.freenode.org" :port 6667
+	      {:host "irc.freenode.org" :port 6667
+	       ;; :as-str will decode as actual strings, rather than just a CharSequence
               :frame (string :utf-8 :delimiters ["\r\n"] :as-str true)})
 
         setup-irc (fn []

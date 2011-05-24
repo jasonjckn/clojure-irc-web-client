@@ -5,7 +5,7 @@
 
 (defn websocket-handler [ch client-info]
   (siphon (map* irc/msg-cmd ch) irc/irc-ch)
-  (siphon (map* str irc/irc-ch) ch))
+  (siphon irc/irc-ch ch))
 
 
 
