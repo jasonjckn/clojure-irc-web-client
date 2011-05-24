@@ -28,7 +28,7 @@
 
         setup-irc (fn []
 		    ;;this filter* should be a remove*, but I apparently forgot to expose that in alpha1
-		    (siphon (->> ch fork (map* parse-ping) (filter* (complement nil?))) ch) 
+		    (siphon (->> ch fork (map* parse-ping) (filter* (complement nil?)) (map* pong-cmd)) ch) 
 		    (apply enqueue ch (handshake)))]
     
     (receive-all (fork ch) println)
