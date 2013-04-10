@@ -8,6 +8,5 @@
                  [aleph "0.2.0-alpha1"]
                  [ring/ring-core "0.3.8"]
                  [ring/ring-devel "0.3.8"]]
-  :dev-dependencies [[swank-clojure "1.2.1"]]
   :main start-server)
 

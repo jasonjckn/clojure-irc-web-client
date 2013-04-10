@@ -6,7 +6,7 @@
         ))
 
 (def chan "#bot-testing")
-(def nick "clj-powered-bot")
+(def nick (str "clj-bot-" (rand-int 10000)))
 
 (defn irc-cmd [cmd args] (str cmd " " args "\r\n"))
 (defn msg-cmd [txt] (irc-cmd "PRIVMSG" (str chan " :" txt)))
